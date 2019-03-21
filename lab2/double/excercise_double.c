@@ -5,6 +5,7 @@
 #include "excercise_double.h"
 #include "vector_double.h"
 #include "matrix_double.h"
+#include "banded_matrix_double.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -95,6 +96,17 @@ Matrix generate_second_matrix(int size) {
     return result;
 }
 
+BandedMatrix generate_third_matrix(int size, double k, double m) {
+    BandedMatrix result = allocate_banded_matrix(size);
+    for (int i = 0; i < size; i++)
+        result.diagonal[i] = k;
+    for (int i = 0; i < size - 1; i++)
+        result.upper_diagonal[i] = 1.0 / ((double) i + m);
+    for (int i = 1; i < size; i++)
+        result.lower_diagonal[i] = k / ((double) i + m + 1.0);
+    return result;
+}
+
 Vector generate_example_vector(int length) {
     Vector result = allocate_vector(length);
     for (int i = 0; i < length; i++) {
@@ -103,5 +115,44 @@ Vector generate_example_vector(int length) {
         else
             result.vector[i] = 1.0;
     }
+    return result;
+}
+
+Vector multiply_banded_matrix_by_vector(BandedMatrix m, Vector v) {
+    int n = v.length;
+    Vector result = allocate_vector(n);
+    result.vector[0] = m.diagonal[0] * v.vector[0] +
+                       m.upper_diagonal[0] * v.vector[1];
+    for (int i = 1; i < n - 1; i++) {
+        result.vector[i] = m.lower_diagonal[i] * v.vector[i - 1] +
+                           m.diagonal[i] * v.vector[i] +
+                           m.upper_diagonal[i] * v.vector[i + 1];
+    }
+    result.vector[n - 1] = m.lower_diagonal[n - 1] * v.vector[n - 2] +
+                           m.diagonal[n - 1] * v.vector[n - 1];
+    return result;
+}
+
+Vector thomas(BandedMatrix matrix) {
+    int n = matrix.size;
+    double *a = matrix.lower_diagonal;
+    double *b = matrix.diagonal;
+    double *c = matrix.upper_diagonal;
+    double *d = matrix.right_column;
+    double *x = malloc(n * sizeof(double));
+    double *c_star = calloc((size_t) n, sizeof(double));
+    double *d_star = calloc((size_t) n, sizeof(double));
+
+    c_star[0] = c[0] / b[0];
+    d_star[0] = d[0] / b[0];
+    for (int i = 1; i < n; i++) {
+        double m = 1.0 / (b[i] - a[i] * c_star[i - 1]);
+        c_star[i] = c[i] * m;
+        d_star[i] = (d[i] - a[i] * d_star[i - 1]) * m;
+    }
+    for (int i = n - 1; i >= 0; i--) {
+        x[i] = d_star[i] - c_star[i] * d[i + 1];
+    }
+    Vector result = {n, x};
     return result;
 }

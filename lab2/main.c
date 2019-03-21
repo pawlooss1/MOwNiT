@@ -5,6 +5,7 @@
 #include "double/excercise_double.h"
 #include "float/exercise_float.h"
 
+
 void ex1(int max_size) {
     printf("zad1:\nn\teukl\t\tmaks\t\teukl_f\t\tmaks_f\n");
     for (int n = 3; n <= max_size; n++) {
@@ -53,8 +54,25 @@ void ex2(int max_size) {
     printf("\n\n");
 }
 
+void ex3(int size) {
+    BandedMatrix A = generate_third_matrix(size, 6.0, 3.0);
+    Vector x_zad = generate_example_vector(size);
+    Vector b = multiply_banded_matrix_by_vector(A, x_zad);
+    A.right_column = b.vector;
+    Vector x_obl = thomas(A);
+    double eukl = euclid_norm(x_zad, x_obl);
+    double max = max_norm(x_zad, x_obl);
+
+    //print_vector(x_zad);
+    //print_vector(x_obl);
+
+    printf("%d\t%f\t%f\t\n", size, eukl, max);
+}
+
 int main() {
-    ex1(20);
-    ex2(1000);
+    //ex1(20);
+    //ex2(1000);
+    for (int i = 3; i < 10000; i++)
+        ex3(i);
     return 0;
 }
