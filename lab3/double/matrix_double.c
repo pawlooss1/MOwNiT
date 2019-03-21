@@ -7,19 +7,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Matrix allocate_matrix(int nrows, int ncols) {
+Matrix *allocate_matrix(int nrows, int ncols) {
     double **arr = (double **) malloc(nrows * sizeof(double *));
     for (int i = 0; i < nrows; i++)
         arr[i] = (double *) malloc(ncols * sizeof(double));
 
-    Matrix m = {nrows, ncols, arr};
+    Matrix *m = malloc(sizeof(Matrix));
+    m->matrix = arr;
+    m->nrows = nrows;
+    m->ncols = ncols;
     return m;
 }
 
-void print_matrix(Matrix m) {
-    int nrows = m.nrows;
-    int ncols = m.ncols;
-    double **matrix = m.matrix;
+void free_matrix(Matrix *m) {
+    for (int i = 0; i < m->nrows; i++)
+        free(m->matrix[i]);
+    free(m->matrix);
+    free(m);
+}
+
+void print_matrix(Matrix *m) {
+    int nrows = m->nrows;
+    int ncols = m->ncols;
+    double **matrix = m->matrix;
     for (int row = 0; row < nrows; row++) {
         printf("| ");
         for (int col = 0; col < ncols; col++) {
@@ -29,19 +39,18 @@ void print_matrix(Matrix m) {
     }
 }
 
-Matrix identity_matrix(int size) {
-    double **matrix = (double **) malloc(size * sizeof(double *));
-    for (int i = 0; i < size; i++)
-        matrix[i] = (double *) malloc(size * sizeof(double));
+Matrix *identity_matrix(int size) {
+    Matrix *identity = allocate_matrix(size, size);
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {
             if (row == col)
-                matrix[row][col] = 1;
+                identity->matrix[row][col] = 1;
             else
-                matrix[row][col] = 0;
+                identity->matrix[row][col] = 0;
         }
     }
-    Matrix identity = {size, size, matrix};
+    identity->ncols = size;
+    identity->nrows = size;
     return identity;
 }
 

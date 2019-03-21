@@ -6,19 +6,29 @@
 #include <stdio.h>
 #include "matrix_float.h"
 
-Matrix_f allocate_matrix_f(int nrows, int ncols) {
+Matrix_f *allocate_matrix_f(int nrows, int ncols) {
     float **arr = (float **) malloc(nrows * sizeof(float *));
     for (int i = 0; i < nrows; i++)
         arr[i] = (float *) malloc(ncols * sizeof(float));
 
-    Matrix_f m = {nrows, ncols, arr};
+    Matrix_f *m = malloc(sizeof(Matrix_f));
+    m->matrix = arr;
+    m->nrows = nrows;
+    m->ncols = ncols;
     return m;
 }
 
-void print_matrix_f(Matrix_f m) {
-    int nrows = m.nrows;
-    int ncols = m.ncols;
-    float **matrix = m.matrix;
+void free_matrix_f(Matrix_f *m) {
+    for (int i = 0; i < m->nrows; i++)
+        free(m->matrix[i]);
+    free(m->matrix);
+    free(m);
+}
+
+void print_matrix_f(Matrix_f *m) {
+    int nrows = m->nrows;
+    int ncols = m->ncols;
+    float **matrix = m->matrix;
     for (int row = 0; row < nrows; row++) {
         printf("| ");
         for (int col = 0; col < ncols; col++) {
@@ -28,19 +38,18 @@ void print_matrix_f(Matrix_f m) {
     }
 }
 
-Matrix_f identity_matrix_f(int size) {
-    float **matrix = (float **) malloc(size * sizeof(float *));
-    for (int i = 0; i < size; i++)
-        matrix[i] = (float *) malloc(size * sizeof(float));
+Matrix_f *identity_matrix_f(int size) {
+    Matrix_f *identity = allocate_matrix_f(size, size);
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {
             if (row == col)
-                matrix[row][col] = 1;
+                identity->matrix[row][col] = 1;
             else
-                matrix[row][col] = 0;
+                identity->matrix[row][col] = 0;
         }
     }
-    Matrix_f identity = {size, size, matrix};
+    identity->ncols = size;
+    identity->nrows = size;
     return identity;
 }
 
