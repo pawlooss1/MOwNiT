@@ -7,7 +7,7 @@
 #include "matrix_double.h"
 #include <math.h>
 #include <stdlib.h>
-#include <stdio.h>>
+#include <stdio.h>
 
 Matrix create_augmented_matrix(Matrix m, Vector v) {
     if (m.nrows != v.length) {

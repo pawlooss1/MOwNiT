@@ -5,7 +5,7 @@
 #include "vector_double.h"
 #include <math.h>
 #include <stdlib.h>
-#include <stdio.h>>
+#include <stdio.h>
 
 Vector allocate_vector(int length) {
     double *vec = (double *) malloc(length * sizeof(double_t));

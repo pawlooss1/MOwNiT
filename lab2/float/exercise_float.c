@@ -7,7 +7,7 @@
 #include "vector_float.h"
 #include <math.h>
 #include <stdlib.h>
-#include <stdio.h>>
+#include <stdio.h>
 
 Matrix_f create_augmented_matrix_f(Matrix_f m, Vector_f v) {
     if (m.nrows != v.length) {

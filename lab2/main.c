@@ -2,8 +2,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include "excercise_double.h"
-#include "exercise_float.h"
+#include "double/excercise_double.h"
+#include "float/exercise_float.h"
 
 void ex1(int max_size) {
     printf("zad1:\nn\teukl\t\tmaks\t\teukl_f\t\tmaks_f\n");
@@ -55,6 +55,6 @@ void ex2(int max_size) {
 
 int main() {
     ex1(20);
-    ex2(2000);
+    ex2(1000);
     return 0;
 }

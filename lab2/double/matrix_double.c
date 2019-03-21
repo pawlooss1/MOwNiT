@@ -5,7 +5,7 @@
 #include "matrix_double.h"
 #include <math.h>
 #include <stdlib.h>
-#include <stdio.h>>
+#include <stdio.h>
 
 Matrix allocate_matrix(int nrows, int ncols) {
     double **arr = (double **) malloc(nrows * sizeof(double *));
