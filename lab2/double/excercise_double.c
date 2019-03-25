@@ -96,7 +96,7 @@ Matrix generate_second_matrix(int size) {
     return result;
 }
 
-BandedMatrix generate_third_matrix(int size, double k, double m) {
+BandedMatrix generate_third_matrix_banded(int size, double k, double m) {
     BandedMatrix result = allocate_banded_matrix(size);
     for (int i = 0; i < size; i++)
         result.diagonal[i] = k;
@@ -104,6 +104,23 @@ BandedMatrix generate_third_matrix(int size, double k, double m) {
         result.upper_diagonal[i] = 1.0 / ((double) i + m);
     for (int i = 1; i < size; i++)
         result.lower_diagonal[i] = k / ((double) i + m + 1.0);
+    return result;
+}
+
+Matrix generate_third_matrix_classic(int size, double k, double m) {
+    Matrix result = allocate_matrix(size, size);
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (j == i)
+                result.matrix[i][j] = k;
+            else if (j == i + 1)
+                result.matrix[i][j] = 1.0 / ((double) i + m);
+            else if (j == i - 1)
+                result.matrix[i][j] = k / ((double) i + m + 1.0);
+            else
+                result.matrix[i][j] = 0.0;
+        }
+    }
     return result;
 }
 

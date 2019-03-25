@@ -29,6 +29,25 @@ void print_matrix(Matrix m) {
     }
 }
 
+void print_matrix_wolfram(Matrix m) {
+    int nrows = m.nrows;
+    int ncols = m.ncols;
+    double **matrix = m.matrix;
+    printf("{");
+    for (int row = 0; row < nrows; row++) {
+        printf("{");
+        for (int col = 0; col < ncols; col++) {
+            printf("%.2f", matrix[row][col]);
+            if (col != ncols - 1)
+                printf(",");
+        }
+        printf("}");
+        if (row != nrows - 1)
+            printf(",");
+    }
+    printf("}");
+}
+
 Matrix identity_matrix(int size) {
     double **matrix = (double **) malloc(size * sizeof(double *));
     for (int i = 0; i < size; i++)

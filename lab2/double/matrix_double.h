@@ -13,6 +13,7 @@ typedef struct Matrix {
 
 Matrix allocate_matrix(int nrows, int ncols);
 void print_matrix(Matrix m);
+void print_matrix_wolfram(Matrix m);
 Matrix identity_matrix(int size);
 void swap_rows(double **row1, double **row2);
 void add_rows(double *row1, double *row2, int ncols);
