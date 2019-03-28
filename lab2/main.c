@@ -67,10 +67,10 @@ void ex3_thomas(int size) {
     double eukl = euclid_norm(x_zad, x_obl);
     double max = max_norm(x_zad, x_obl);
 
-    BandedMatrix_f A_f = generate_third_matrix_banded_f(size, 6.0, 3.0);
+    BandedMatrix_f *A_f = generate_third_matrix_banded_f(size, 6.0, 3.0);
     Vector_f x_zad_f = generate_example_vector_f(size);
     Vector_f b_f = multiply_banded_matrix_by_vector_f(A_f, x_zad_f);
-    A_f.right_column = b_f.vector;
+    A_f->right_column = b_f.vector;
     start = times(&tmsstart);
     Vector_f x_obl_f = thomas_f(A_f);
     end = times(&tmsend);
