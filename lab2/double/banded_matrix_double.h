@@ -13,6 +13,6 @@ typedef struct BandedMatrix {
     double *right_column;
 } BandedMatrix;
 
-BandedMatrix allocate_banded_matrix(int size);
+BandedMatrix *allocate_banded_matrix(int size);
 
 #endif //LAB2_BANDED_MATRIX_DOUBLE_H

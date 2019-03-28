@@ -96,14 +96,14 @@ Matrix generate_second_matrix(int size) {
     return result;
 }
 
-BandedMatrix generate_third_matrix_banded(int size, double k, double m) {
-    BandedMatrix result = allocate_banded_matrix(size);
+BandedMatrix *generate_third_matrix_banded(int size, double k, double m) {
+    BandedMatrix *result = allocate_banded_matrix(size);
     for (int i = 0; i < size; i++)
-        result.diagonal[i] = k;
+        result->diagonal[i] = k;
     for (int i = 0; i < size - 1; i++)
-        result.upper_diagonal[i] = 1.0 / ((double) i + m);
-    for (int i = 1; i < size; i++)
-        result.lower_diagonal[i] = k / ((double) i + m + 1.0);
+        result->upper_diagonal[i] = 1.0 / ((double) (i + 1) + m);
+    for (int i = 0; i < size - 1; i++)
+        result->lower_diagonal[i] = k / ((double) (i + 1) + m + 1.0);
     return result;
 }
 
@@ -135,40 +135,38 @@ Vector generate_example_vector(int length) {
     return result;
 }
 
-Vector multiply_banded_matrix_by_vector(BandedMatrix m, Vector v) {
+Vector multiply_banded_matrix_by_vector(BandedMatrix *m, Vector v) {
     int n = v.length;
     Vector result = allocate_vector(n);
-    result.vector[0] = m.diagonal[0] * v.vector[0] +
-                       m.upper_diagonal[0] * v.vector[1];
+    result.vector[0] = m->diagonal[0] * v.vector[0] +
+                       m->upper_diagonal[0] * v.vector[1];
     for (int i = 1; i < n - 1; i++) {
-        result.vector[i] = m.lower_diagonal[i] * v.vector[i - 1] +
-                           m.diagonal[i] * v.vector[i] +
-                           m.upper_diagonal[i] * v.vector[i + 1];
+        result.vector[i] = m->lower_diagonal[i-1] * v.vector[i - 1] +
+                           m->diagonal[i] * v.vector[i] +
+                           m->upper_diagonal[i] * v.vector[i + 1];
     }
-    result.vector[n - 1] = m.lower_diagonal[n - 1] * v.vector[n - 2] +
-                           m.diagonal[n - 1] * v.vector[n - 1];
+    result.vector[n - 1] = m->lower_diagonal[n - 2] * v.vector[n - 2] +
+                           m->diagonal[n - 1] * v.vector[n - 1];
     return result;
 }
 
-Vector thomas(BandedMatrix matrix) {
-    int n = matrix.size;
-    double *a = matrix.lower_diagonal;
-    double *b = matrix.diagonal;
-    double *c = matrix.upper_diagonal;
-    double *d = matrix.right_column;
+Vector thomas(BandedMatrix *matrix) {
+    int n = matrix->size;
+    double *a = matrix->lower_diagonal;
+    double *d = matrix->diagonal;
+    double *c = matrix->upper_diagonal;
+    double *b = matrix->right_column;
     double *x = malloc(n * sizeof(double));
-    double *c_star = calloc((size_t) n, sizeof(double));
-    double *d_star = calloc((size_t) n, sizeof(double));
 
-    c_star[0] = c[0] / b[0];
-    d_star[0] = d[0] / b[0];
+    double xmult;
     for (int i = 1; i < n; i++) {
-        double m = 1.0 / (b[i] - a[i] * c_star[i - 1]);
-        c_star[i] = c[i] * m;
-        d_star[i] = (d[i] - a[i] * d_star[i - 1]) * m;
+        xmult = a[i - 1] / d[i - 1];
+        d[i] = d[i] - xmult * c[i - 1];
+        b[i] = b[i] - xmult * b[i - 1];
     }
-    for (int i = n - 1; i >= 0; i--) {
-        x[i] = d_star[i] - c_star[i] * d[i + 1];
+    x[n - 1] = b[n - 1] / d[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+        x[i] = (b[i] - c[i] * x[i + 1]) / d[i];
     }
     Vector result = {n, x};
     return result;

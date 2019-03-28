@@ -47,7 +47,7 @@ void ex2(int size) {
     float eukl_f = euclid_norm_f(x_zad_f, x_obl_f);
     float max_f = max_norm_f(x_zad_f, x_obl_f);
 
-    printf("%d\t\t%e\t%e\t%f\t%f\t\n", size, eukl, max, eukl_f, max_f);
+    printf("%4d\t%e\t%e\t%f\t%f\t\n", size, eukl, max, eukl_f, max_f);
 }
 
 void ex3_thomas(int size) {
@@ -56,10 +56,10 @@ void ex3_thomas(int size) {
     double real_time, real_time_f;
     long clktck = sysconf(_SC_CLK_TCK);
 
-    BandedMatrix A = generate_third_matrix_banded(size, 6.0, 3.0);
+    BandedMatrix *A = generate_third_matrix_banded(size, 6.0, 3.0);
     Vector x_zad = generate_example_vector(size);
     Vector b = multiply_banded_matrix_by_vector(A, x_zad);
-    A.right_column = b.vector;
+    A->right_column = b.vector;
     start = times(&tmsstart);
     Vector x_obl = thomas(A);
     end = times(&tmsend);
@@ -78,7 +78,7 @@ void ex3_thomas(int size) {
     float eukl_f = euclid_norm_f(x_zad_f, x_obl_f);
     float max_f = max_norm_f(x_zad_f, x_obl_f);
 
-    printf("%d\t\t%f\t%f\t%f\t%f\t%e\n%e\t\n", size, eukl, max, eukl_f, max_f, real_time, real_time_f);
+    printf("%4d\t%e\t%e\t%e\t%e\t%e\n", size, eukl, max, eukl_f, max_f, real_time);
 }
 
 void ex3_gauss(int size) {
@@ -109,7 +109,7 @@ void ex3_gauss(int size) {
     float eukl_f = euclid_norm_f(x_zad_f, x_obl_f);
     float max_f = max_norm_f(x_zad_f, x_obl_f);
 
-    printf("%d\t\t%e\t%e\t%e\t%e\t%e\t%e\t\n", size, eukl, max, eukl_f, max_f, real_time, real_time_f);
+    printf("%4d\t%e\t%e\t%e\t%e\t%e\n", size, eukl, max, eukl_f, max_f, real_time);
 }
 
 int main() {
@@ -117,17 +117,17 @@ int main() {
     for (int i = 4; i <= 20; i += 2)
         ex1(i);
 
-    printf("\nzad2:\nn\tteukl\t\tmaks\t\teukl_f\t\tmaks_f\n");
+    printf("\nzad2:\nn\t\teukl\t\t\tmaks\t\t\teukl_f\t\tmaks_f\n");
     ex2(5);
     ex2(10);
     ex2(25);
     ex2(50);
     ex2(100);
     ex2(500);
-    ex2(1000);
+    //ex2(1000);
     //ex2(2500);
 
-    printf("\nzad3(Thomas):\nn\t\teukl\t\tmaks\t\teukl_f\t\tmaks_f\t\ttime\t\ttime_f\n");
+    printf("\nzad3(Thomas):\nn\t\teukl\t\t\tmaks\t\t\teukl_f\t\t\tmaks_f\t\t\ttime\n");
     ex3_thomas(5);
     ex3_thomas(10);
     ex3_thomas(25);
@@ -135,13 +135,13 @@ int main() {
     ex3_thomas(500);
     ex3_thomas(1500);
     ex3_thomas(5000);
+    ex3_thomas(500000);
 
-    printf("\nzad3(Gauss):\nn\t\teukl\t\tmaks\t\teukl_f\t\tmaks_f\t\ttime\t\ttime_f\n");
+    printf("\nzad3(Gauss):\nn\t\teukl\t\t\tmaks\t\t\teukl_f\t\t\tmaks_f\t\t\ttime\n");
     ex3_gauss(5);
     ex3_gauss(10);
     ex3_gauss(25);
     ex3_gauss(100);
     ex3_gauss(500);
     ex3_gauss(1500);
-    ex3_gauss(5000);
 }
