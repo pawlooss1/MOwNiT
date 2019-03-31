@@ -20,10 +20,36 @@ void free_vector(Vector *v) {
     free(v);
 }
 
+Vector *generate_random_vector(int length) {
+    Vector *result = allocate_vector(length);
+    for (int i = 0; i < result->length; i++)
+        result->vector[i] = (double) rand() / ((double) RAND_MAX);
+    return result;
+}
+
 Vector *copy_vector(Vector *v) {
     Vector *result = allocate_vector(v->length);
     for (int i = 0; i < v->length; i++)
         result->vector[i] = v->vector[i];
+    return result;
+}
+
+void copy_vector_values(Vector *v_source, Vector *v_dest) {
+    if (v_source->length != v_dest->length)
+        return;
+    for (int i = 0; i < v_source->length; i++)
+        v_dest->vector[i] = v_source->vector[i];
+}
+
+void multiply_vector_by_const(Vector *v, double c) {
+    for (int i = 0; i < v->length; i++)
+        v->vector[i] *= c;
+}
+
+double dot_product(Vector *v1, Vector *v2) {
+    double result = 0;
+    for (int i = 0; i < v1->length; i++)
+        result += v1->vector[i] * v2->vector[i];
     return result;
 }
 
@@ -34,6 +60,13 @@ void print_vector(Vector *v) {
         printf("| %f |\n", vector[i]);
     }
     printf("\n");
+}
+
+double norm(Vector *v) {
+    double sum = 0;
+    for (int i = 0; i < v->length; i++)
+        sum += v->vector[i] * v->vector[i];
+    return sqrt(sum);
 }
 
 double euclid_norm(Vector *x, Vector *x_calc) {

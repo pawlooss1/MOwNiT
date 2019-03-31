@@ -39,6 +39,29 @@ void print_matrix(Matrix *m) {
     }
 }
 
+Matrix *matrix_multiplication(Matrix *a, Matrix *b) {
+    Matrix *result = allocate_matrix(a->nrows, b->ncols);
+    double sum = 0;
+    for (int i = 0; i < a->nrows; i++) {
+        for (int j = 0; j < b->ncols; j++) {
+            for (int k = 0; k < a->ncols; k++)
+                sum += a->matrix[i][k] * b->matrix[k][j];
+            result->matrix[i][j] = sum;
+            sum = 0;
+        }
+    }
+    return result;
+}
+
+Matrix *matrix_substraction(Matrix *a, Matrix *b) {
+    Matrix *result = allocate_matrix(a->nrows, b->ncols);
+    for (int i = 0; i < a->nrows; i++) {
+        for (int j = 0; j < a->ncols; j++)
+            result->matrix[i][j] = a->matrix[i][j] - b->matrix[i][j];
+    }
+    return result;
+}
+
 Matrix *identity_matrix(int size) {
     Matrix *identity = allocate_matrix(size, size);
     for (int row = 0; row < size; row++) {

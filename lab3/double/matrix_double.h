@@ -5,6 +5,7 @@
 #ifndef LAB2_MATRIX_DOUBLE_H
 #define LAB2_MATRIX_DOUBLE_H
 
+
 typedef struct Matrix {
     int nrows;
     int ncols;
@@ -13,7 +14,13 @@ typedef struct Matrix {
 
 Matrix *allocate_matrix(int nrows, int ncols);
 
+void free_matrix(Matrix *m);
+
 void print_matrix(Matrix *m);
+
+Matrix *matrix_multiplication(Matrix *a, Matrix *b);
+
+Matrix *matrix_substraction(Matrix *a, Matrix *b);
 
 Matrix *identity_matrix(int size);
 
