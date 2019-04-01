@@ -13,21 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5a303ea7-2c2a-41de-ac14-09b629b70828" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/double/excercise_double.c" beforeDir="false" afterPath="$PROJECT_DIR$/double/excercise_double.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/double/excercise_double.h" beforeDir="false" afterPath="$PROJECT_DIR$/double/excercise_double.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double/matrix_double.c" beforeDir="false" afterPath="$PROJECT_DIR$/double/matrix_double.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double/matrix_double.h" beforeDir="false" afterPath="$PROJECT_DIR$/double/matrix_double.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double/vector_double.c" beforeDir="false" afterPath="$PROJECT_DIR$/double/vector_double.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double/vector_double.h" beforeDir="false" afterPath="$PROJECT_DIR$/double/vector_double.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/banded_matrix_float.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/banded_matrix_float.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/exercise_float.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/exercise_float.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/matrix_float.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/matrix_float.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/vector_float.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/float/vector_float.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -43,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="162" column="14" selection-start-line="162" selection-start-column="14" selection-end-line="162" selection-end-column="14" />
+            <state relative-caret-position="-186">
+              <caret line="147" column="129" selection-start-line="147" selection-start-column="129" selection-end-line="147" selection-end-column="129" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -55,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double/excercise_double.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-666">
-              <caret line="136" column="36" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+            <state relative-caret-position="1421">
+              <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -64,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double/excercise_double.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="76" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+            <state relative-caret-position="405">
+              <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -74,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/double/banded_matrix_double.c">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -82,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double/matrix_double.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="56" column="57" lean-forward="true" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
+            <state relative-caret-position="840">
+              <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
               <folding>
                 <element signature="e#40#66#0" expanded="true" />
               </folding>
@@ -103,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double/vector_double.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
+            <state relative-caret-position="540">
               <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="e#40#66#0" expanded="true" />
@@ -215,12 +202,13 @@
       <workItem from="1553297487153" duration="67000" />
       <workItem from="1553517801010" duration="11000" />
       <workItem from="1553521653890" duration="5498000" />
-      <workItem from="1553884451796" duration="14229000" />
+      <workItem from="1553884451796" duration="14427000" />
+      <workItem from="1554120759944" duration="4754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28123000" />
+    <option name="totallyTimeSpent" value="33075000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -236,7 +224,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26040554" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26307365" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -261,58 +249,13 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/float/banded_matrix_float.c">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/matrix_float.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/exercise_float.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/matrix_float.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/vector_float.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/vector_float.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/float/exercise_float.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/double/vector_double.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/float/banded_matrix_float.c" />
+    <entry file="file://$PROJECT_DIR$/float/matrix_float.c" />
+    <entry file="file://$PROJECT_DIR$/float/exercise_float.h" />
+    <entry file="file://$PROJECT_DIR$/float/matrix_float.h" />
+    <entry file="file://$PROJECT_DIR$/float/vector_float.h" />
+    <entry file="file://$PROJECT_DIR$/float/vector_float.c" />
+    <entry file="file://$PROJECT_DIR$/float/exercise_float.c" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -323,7 +266,17 @@
     <entry file="file://$PROJECT_DIR$/double/banded_matrix_double.c">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double/matrix_double.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
+          <folding>
+            <element signature="e#40#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -334,19 +287,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/double/matrix_double.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="56" column="57" lean-forward="true" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
-          <folding>
-            <element signature="e#40#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/double/vector_double.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="540">
           <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="e#40#66#0" expanded="true" />
@@ -354,24 +297,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/double/vector_double.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/double/excercise_double.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="76" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+        <state relative-caret-position="405">
+          <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/double/excercise_double.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-666">
-          <caret line="136" column="36" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+        <state relative-caret-position="1421">
+          <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="162" column="14" selection-start-line="162" selection-start-column="14" selection-end-line="162" selection-end-column="14" />
+        <state relative-caret-position="-186">
+          <caret line="147" column="129" selection-start-line="147" selection-start-column="129" selection-end-line="147" selection-end-column="129" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

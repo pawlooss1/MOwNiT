@@ -17,15 +17,17 @@ Vector *generate_example_vector(int length);
 
 Vector *generate_iteration_vector(int length, double value);
 
+Vector *generate_iteration_vector_diff_val(int length);
+
 Matrix *generate_exercise_matrix(int size);
 
 Vector *multiply_banded_matrix_by_vector(BandedMatrix m, Vector *v);
 
-Vector *jacobi_first_criterion(Matrix *a, Vector *b, Vector *x, double threshold);
+int jacobi_first_criterion(Matrix *a, Vector *b, Vector *x, double threshold);
 
-Vector *jacobi_second_criterion(Matrix *a, Vector *b, Vector *x, double threshold);
+int jacobi_second_criterion(Matrix *a, Vector *b, Vector *x, double threshold);
 
-Vector *sor(Matrix *a, Vector *b, Vector *x, double threshold, double omega);
+int sor(Matrix *a, Vector *b, Vector *x, double threshold, double omega);
 
 double jacobi_spectral_radius_check(Matrix *A);
 

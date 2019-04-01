@@ -54,6 +54,14 @@ Vector *generate_iteration_vector(int length, double value) {
     return result;
 }
 
+Vector *generate_iteration_vector_diff_val(int length) {
+    Vector *result = allocate_vector(length);
+    for (int i = 0; i < length; i++) {
+        result->vector[i] = i * i % 100;
+    }
+    return result;
+}
+
 Matrix *generate_exercise_matrix(int size) {
     Matrix *result = allocate_matrix(size, size);
     for (int row = 0; row < size; row++) {
@@ -82,66 +90,57 @@ Vector *multiply_banded_matrix_by_vector(BandedMatrix m, Vector *v) {
     return result;
 }
 
-Vector *jacobi_first_criterion(Matrix *a, Vector *b, Vector *x, double threshold) {
-    Vector *u = copy_vector(x);
-    double criterion;
-    int n = x->length;
-    for (int i = 0; i < n; i++) {
-        double d = 1 / a->matrix[i][i];
-        b->vector[i] *= d;
-        for (int j = 0; j < n; j++) {
-            a->matrix[i][j] *= d;
-        }
-    }
-    do {
-        for (int i = 0; i < n; i++) {
-            double sum = 0;
-            for (int j = 0; j < n; j++) {
-                if (j != i)
-                    sum += (a->matrix[i][j] * x->vector[j]);
-            }
-            u->vector[i] = b->vector[i] - sum;
-        }
-        criterion = euclid_norm(x, u);
-        for (int i = 0; i < n; i++) {
-            x->vector[i] = u->vector[i];
-        }
-    } while (criterion > threshold);
-    return u;
-}
-
-Vector *jacobi_second_criterion(Matrix *a, Vector *b, Vector *x, double threshold) {
-    Vector *u = copy_vector(x);
-    double criterion;
-    int n = x->length;
-    for (int i = 0; i < n; i++) {
-        double d = 1 / a->matrix[i][i];
-        b->vector[i] *= d;
-        for (int j = 0; j < n; j++) {
-            a->matrix[i][j] *= d;
-        }
-    }
-    do {
-        for (int i = 0; i < n; i++) {
-            double sum = 0;
-            for (int j = 0; j < n; j++) {
-                if (j != i)
-                    sum += (a->matrix[i][j] * x->vector[j]);
-            }
-            u->vector[i] = b->vector[i] - sum;
-        }
-        criterion = euclid_norm(multiply_matrix_by_vector(a, x), b);
-        for (int i = 0; i < n; i++) {
-            x->vector[i] = u->vector[i];
-        }
-    } while (criterion > threshold);
-    return u;
-}
-
-Vector *sor(Matrix *a, Vector *b, Vector *x, double threshold, double omega) {
+int jacobi_first_criterion(Matrix *a, Vector *b, Vector *x, double threshold) {
     Vector *u = copy_vector(x);
     double criterion, sum, diag;
     int n = x->length;
+    int iterations = 0;
+    do {
+        copy_vector_values(x, u);
+        for (int i = 0; i < n; i++) {
+            sum = b->vector[i];
+            diag = a->matrix[i][i];
+            for (int j = 0; j < n; j++) {
+                if (j != i)
+                    sum -= (a->matrix[i][j] * u->vector[j]);
+            }
+            x->vector[i] = sum / diag;
+        }
+        criterion = euclid_norm(x, u);
+        iterations++;
+    } while (criterion > threshold);
+    free_vector(u);
+    return iterations;
+}
+
+int jacobi_second_criterion(Matrix *a, Vector *b, Vector *x, double threshold) {
+    Vector *u = copy_vector(x);
+    double criterion, sum, diag;
+    int n = x->length;
+    int iterations = 0;
+    do {
+        copy_vector_values(x, u);
+        for (int i = 0; i < n; i++) {
+            sum = b->vector[i];
+            diag = a->matrix[i][i];
+            for (int j = 0; j < n; j++) {
+                if (j != i)
+                    sum -= (a->matrix[i][j] * u->vector[j]);
+            }
+            x->vector[i] = sum / diag;
+        }
+        criterion = euclid_norm(multiply_matrix_by_vector(a, x), b);
+        iterations++;
+    } while (criterion > threshold);
+    free_vector(u);
+    return iterations;
+}
+
+int sor(Matrix *a, Vector *b, Vector *x, double threshold, double omega) {
+    Vector *u = copy_vector(x);
+    double criterion, sum, diag;
+    int n = x->length;
+    int iterations = 0;
     do {
         copy_vector_values(x, u);
         for (int i = 0; i < n; i++) {
@@ -155,8 +154,9 @@ Vector *sor(Matrix *a, Vector *b, Vector *x, double threshold, double omega) {
             x->vector[i] = omega * x->vector[i] + (1 - omega) * u->vector[i];
         }
         criterion = euclid_norm(x, u);
+        iterations++;
     } while (criterion > threshold);
-    return x;
+    return iterations;
 }
 
 double jacobi_spectral_radius_check(Matrix *A) {
@@ -191,7 +191,7 @@ double find_max_eigenvalue(Matrix *m) {
     double result = xTMx / xTx;
     free_vector(max_eigenvector);
     free_vector(Mx);
-    return result;
+    return fabs(result);
 }
 
 Vector *power_iteration(Matrix *m, double epsilon) {
