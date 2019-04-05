@@ -57,7 +57,7 @@ Vector *generate_iteration_vector(int length, double value) {
 Vector *generate_iteration_vector_diff_val(int length) {
     Vector *result = allocate_vector(length);
     for (int i = 0; i < length; i++) {
-        result->vector[i] = i * i % 100;
+        result->vector[i] = (i * i * i) % 200 - 100;
     }
     return result;
 }

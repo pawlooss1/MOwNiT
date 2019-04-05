@@ -146,6 +146,7 @@ int main() {
     printf("Promień spektralny w metodzie jacobiego dla n = 250:\n%f\n", jacobi_spectral_radius_check(generate_exercise_matrix(250)));
     printf("Promień spektralny w metodzie jacobiego dla n = 1000:\n%f\n", jacobi_spectral_radius_check(generate_exercise_matrix(1000)));
     printf("Promień spektralny w metodzie jacobiego dla n = 2000:\n%f\n", jacobi_spectral_radius_check(generate_exercise_matrix(2000)));
+    printf("Promień spektralny w metodzie jacobiego dla n = 3000:\n%f\n", jacobi_spectral_radius_check(generate_exercise_matrix(3000)));
 
     omega = 1;
     printf("\nzad2 (wartosci wektora poczatkowego = %f, ro = %e, omega = %.1f):\n", start_value, ro, omega);
