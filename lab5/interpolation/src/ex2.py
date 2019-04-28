@@ -45,6 +45,3 @@ def exercise_2():
     hermite_ch_errors = {'Eukl': eukl_errors, 'Max': max_errors}
 
     return hermite_errors, hermite_ch_errors
-
-
-exercise_2()

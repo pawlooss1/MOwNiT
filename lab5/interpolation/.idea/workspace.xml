@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b7419c7-f67e-491d-af8c-99e93eda9b36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data_saver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_saver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ex1.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ex2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ex2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,10 +47,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/data_saver.py">
+        <entry file="file://$PROJECT_DIR$/src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="462">
+              <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -77,9 +75,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/src/functions.py" />
-        <option value="$PROJECT_DIR$/src/ex2.py" />
         <option value="$PROJECT_DIR$/src/ex1.py" />
         <option value="$PROJECT_DIR$/src/data_saver.py" />
+        <option value="$PROJECT_DIR$/src/ex2.py" />
+        <option value="$PROJECT_DIR$/src/analysis.py" />
       </list>
     </option>
   </component>
@@ -137,7 +136,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_saver">
+  <component name="RunManager" selected="Python.analysis">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="interpolation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,7 +159,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="data_saver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="interpolation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,12 +221,12 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.data_saver" />
+      <item itemvalue="Python.analysis" />
       <item itemvalue="Python.ex2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.data_saver" />
+        <item itemvalue="Python.analysis" />
         <item itemvalue="Python.ex2" />
       </list>
     </recent_temporary>
@@ -246,12 +245,12 @@
       <workItem from="1556447546385" duration="7145000" />
       <workItem from="1556455034665" duration="370000" />
       <workItem from="1556456076321" duration="4000" />
-      <workItem from="1556474405150" duration="2455000" />
+      <workItem from="1556474405150" duration="10738000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15441000" />
+    <option name="totallyTimeSpent" value="23724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
@@ -297,6 +296,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ex1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-949">
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ex2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -307,17 +313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ex1.py">
+    <entry file="file://$PROJECT_DIR$/src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-949">
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data_saver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="462">
+          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
