@@ -1,5 +1,4 @@
 from functions import *
-import pandas as pd
 
 
 def exercise_newton(a, b, n, eukl_err, max_err):
@@ -46,7 +45,7 @@ def exercise_lagrange_ch(a, b, n, eukl_err, max_err):
     print_plots(x_inter, x_print, y_inter, y_print, p_print, plot_name)
 
 
-def exercise():
+def exercise_1():
     a = -np.pi
     b = 2 * np.pi
 
@@ -56,8 +55,7 @@ def exercise():
         exercise_lagrange(a, b, i, eukl_errors, max_errors)
     for i in range(15, 31, 5):
         exercise_lagrange(a, b, i, eukl_errors, max_errors)
-    d = {'Eukl': eukl_errors, 'Max': max_errors}
-    lagrange_errors = pd.DataFrame(d)
+    lagrange_errors = {'Eukl': eukl_errors, 'Max': max_errors}
 
     eukl_errors = {}
     max_errors = {}
@@ -65,8 +63,7 @@ def exercise():
         exercise_newton(a, b, i, eukl_errors, max_errors)
     for i in range(15, 31, 5):
         exercise_newton(a, b, i, eukl_errors, max_errors)
-    d = {'Eukl': eukl_errors, 'Max': max_errors}
-    newton_errors = pd.DataFrame(d)
+    newton_errors = {'Eukl': eukl_errors, 'Max': max_errors}
 
     eukl_errors = {}
     max_errors = {}
@@ -74,8 +71,7 @@ def exercise():
         exercise_lagrange_ch(a, b, i, eukl_errors, max_errors)
     for i in range(15, 31, 5):
         exercise_lagrange_ch(a, b, i, eukl_errors, max_errors)
-    d = {'Eukl': eukl_errors, 'Max': max_errors}
-    lagrange_ch_errors = pd.DataFrame(d)
+    lagrange_ch_errors = {'Eukl': eukl_errors, 'Max': max_errors}
 
     eukl_errors = {}
     max_errors = {}
@@ -83,6 +79,5 @@ def exercise():
         exercise_newton_ch(a, b, i, eukl_errors, max_errors)
     for i in range(15, 31, 5):
         exercise_newton_ch(a, b, i, eukl_errors, max_errors)
-    d = {'Eukl': eukl_errors, 'Max': max_errors}
-    newton_ch_errors = pd.DataFrame(d)
+    newton_ch_errors = {'Eukl': eukl_errors, 'Max': max_errors}
     return lagrange_errors, newton_errors, lagrange_ch_errors, newton_ch_errors

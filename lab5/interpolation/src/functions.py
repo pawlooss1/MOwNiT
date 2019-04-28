@@ -39,6 +39,36 @@ def newton_interpolation(X, Y, x):
     return result
 
 
+def calculate_hermite_coefficients(X, f, f_1):
+    n = 2 * len(X)
+    x = np.empty(n)
+    for i in range(n):
+        x[i] = X[(i // 2)]
+    A = np.empty((n, n))
+    for i in range(n):
+        A[i][0] = f(x[i])
+    for i in range(0, n, 2):
+        A[i][1] = f_1(x[i])
+    for i in range(1, n - 1, 2):
+        A[i][1] = (A[i + 1][0] - A[i][0]) / (x[i + 1] - x[i])
+    for j in range(2, n):
+        for i in range(n - j):
+            A[i][j] = (A[i + 1][j - 1] - A[i][j - 1]) / (x[i + j] - x[i])
+    return A[0]
+
+
+def hermite_interpolation(X, f, f_1, x):
+    result = 0
+    n = 2 * len(X)
+    A = calculate_hermite_coefficients(X, f, f_1)
+    for i in range(n):
+        product = A[i]
+        for j in range(i):
+            product *= (x - X[j//2])
+        result += product
+    return result
+
+
 def chebyshev_roots(n):
     return np.flip(np.fromfunction(lambda i: np.cos(np.pi * (i + 0.5) / n), (n,)))
 
@@ -55,47 +85,61 @@ def f(x):
     return np.sin(2 * x) * np.sin(x ** 2 / np.pi)
 
 
-def interpolate_lagrange(a, b, n):
-    x_inter = np.linspace(a, b, n)
+def f_1(x):
+    return 2 * np.cos(2 * x) * np.sin(x ** 2 / np.pi) + (2 * x / np.pi) * np.sin(2 * x) * np.cos(x ** 2 / np.pi)
+
+
+def prepare_arrays(a, b, n, nodes):
+    if nodes == 'ch':
+        x_inter = chebyshev_nodes(a, b, n)
+    elif nodes == 'lin':
+        x_inter = np.linspace(a, b, n)
     x_print = np.linspace(a, b, POINTS)
     y_inter = f(x_inter)
     y_print = f(x_print)
     p_print = np.empty(POINTS)
+    return x_inter, x_print, y_inter, y_print, p_print
+
+
+def interpolate_lagrange(a, b, n):
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'lin')
     for i in range(POINTS):
         p_print[i] = lagrange_interpolation(x_inter, y_inter, x_print[i])
     return x_inter, x_print, y_inter, y_print, p_print
 
 
 def interpolate_newton(a, b, n):
-    x_inter = np.linspace(a, b, n)
-    x_print = np.linspace(a, b, POINTS)
-    y_inter = f(x_inter)
-    y_print = f(x_print)
-    p_print = np.empty(POINTS)
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'lin')
     for i in range(POINTS):
         p_print[i] = newton_interpolation(x_inter, y_inter, x_print[i])
     return x_inter, x_print, y_inter, y_print, p_print
 
 
 def interpolate_lagrange_ch(a, b, n):
-    x_inter = chebyshev_nodes(a, b, n)
-    x_print = np.linspace(a, b, POINTS)
-    y_inter = f(x_inter)
-    y_print = f(x_print)
-    p_print = np.empty(POINTS)
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'ch')
     for i in range(POINTS):
         p_print[i] = lagrange_interpolation(x_inter, y_inter, x_print[i])
     return x_inter, x_print, y_inter, y_print, p_print
 
 
 def interpolate_newton_ch(a, b, n):
-    x_inter = chebyshev_nodes(a, b, n)
-    x_print = np.linspace(a, b, POINTS)
-    y_inter = f(x_inter)
-    y_print = f(x_print)
-    p_print = np.empty(POINTS)
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'ch')
     for i in range(POINTS):
         p_print[i] = newton_interpolation(x_inter, y_inter, x_print[i])
+    return x_inter, x_print, y_inter, y_print, p_print
+
+
+def interpolate_hermite(a, b, n):
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'lin')
+    for i in range(POINTS):
+        p_print[i] = hermite_interpolation(x_inter, f, f_1, x_print[i])
+    return x_inter, x_print, y_inter, y_print, p_print
+
+
+def interpolate_hermite_ch(a, b, n):
+    x_inter, x_print, y_inter, y_print, p_print = prepare_arrays(a, b, n, 'ch')
+    for i in range(POINTS):
+        p_print[i] = hermite_interpolation(x_inter, f, f_1, x_print[i])
     return x_inter, x_print, y_inter, y_print, p_print
 
 
