@@ -25,11 +25,17 @@ def write_excel():
     writer.save()
 
 
-def plot_lagrange():
-    df = data['Lagrange']
+def plot_errors(method):
+    df = data[method]
     x = df.index.values
     eukl = df['Eukl'].values
     max = df['Max'].values
-    plt.plot(x, eukl, '.')
-    plt.plot(x, max, '.')
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+    fig.suptitle(method)
+    axes[0].plot(x, eukl, '.')
+    axes[1].plot(x, max, '.')
+    for i in range(2):
+        axes[i].set_title('Norma ' + repr(i+1))
+        axes[i].set_xlabel('n')
+        axes[i].set_ylabel('norm(W(x)-f(x))')
     plt.show()
