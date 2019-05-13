@@ -8,6 +8,10 @@ def f(x):
     return np.sin(2*x) * np.sin(x**2/np.pi)
 
 
+def simple_wage(x):
+    return 1
+
+
 def monomial_base(i):
     return lambda x: x**i
 
@@ -44,21 +48,27 @@ def compute_a_coeff(m, x_arr, y_arr, wage_fun, base_generator):
     return np.linalg.solve(g, b)
 
 
-def print_errors(y_print, p_print):
-    print('Błąd interpolacji(norma euklidesowa):', np.linalg.norm(y_print-p_print) / POINTS)
-    print('Błąd interpolacji(norma maksimum):', np.linalg.norm(y_print-p_print, ord=np.inf))
+def calculate_errors(y_print, p_print):
+    eukl_norm = np.linalg.norm(y_print - p_print) / POINTS
+    max_norm = np.linalg.norm(y_print - p_print, ord=np.inf)
+    return eukl_norm, max_norm
 
 
-def print_plots(x_approx, x_print, y_approx, y_print, p_print):
-    fig = plt.figure()
-    ax = fig.add_axes([0, 0, 1, 1])
+def print_errors(eukl, max):
+    print('Błąd interpolacji(norma euklidesowa):', eukl)
+    print('Błąd interpolacji(norma maksimum):', max)
+
+
+def print_plots(x_approx, x_print, y_approx, y_print, p_print, plot_name):
+    fig, ax = plt.subplots()
     ax.plot(x_print, p_print, label="W(x)")
     ax.plot(x_print, y_print, label="f(x)")
-    ax.plot(x_approx, y_approx, '*', label='Węzły aproksymacji')
-    ax.set_title('elo')
+    ax.plot(x_approx, y_approx, '*', label='Węzły interpolacji')
+    ax.set_title(plot_name)
     ax.set_ylabel('y')
     ax.set_xlabel('x')
     ax.legend()
+    plt.tight_layout()
     plt.show()
 
 
@@ -77,13 +87,16 @@ def approximate(m, x_print, x_approx, y_approx, wage_fun, base_generator):
     return evaluate_approximation_polynomial(x_print, a, base_generator)
 
 
-def exercise(a, b, n, m):
+def exercise(a, b, n, m, wage, base):
+    plot_name = "Stopień wielomianu: {0:d}, liczba węzłów: {1:d}".format(m, n)
     m = m + 1
-    print("Stopień wielomianu: {0:d}, liczba węzłów: {1:d}".format(m, n))
+    print(plot_name)
     x_approx = np.linspace(a, b, n)
     x_print = np.linspace(a, b, POINTS)
     y_approx = f(x_approx)
     y_print = f(x_print)
-    p_print = approximate(m, x_print, x_approx, y_approx, wage_fun=lambda x: 1, base_generator=monomial_base)
-    print_errors(y_print, p_print)
-    print_plots(x_approx, x_print, y_approx, y_print, p_print)
+    p_print = approximate(m, x_print, x_approx, y_approx, wage_fun=wage, base_generator=base)
+    eukl_n, max_n = calculate_errors(y_print, p_print)
+    print_errors(eukl_n, max_n)
+    print_plots(x_approx, x_print, y_approx, y_print, p_print, plot_name)
+    return eukl_n, max_n
