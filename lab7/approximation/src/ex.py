@@ -6,7 +6,7 @@ def exercise_polynomial(m):
     b = 2 * np.pi
     eukl_errors = {}
     max_errors = {}
-    for n in range(10, 101, 10):
+    for n in range(20, 61, 20):
         eukl_n, max_n = exercise(a, b, n, m, simple_wage, monomial_base)
         eukl_errors[n] = eukl_n
         max_errors[n] = max_n
@@ -19,7 +19,7 @@ def exercise_trigonometrical(m):
     b = 2 * np.pi
     eukl_errors = {}
     max_errors = {}
-    for n in range(20, 101, 10):
+    for n in range(20, 101, 30):
         eukl_n, max_n = exercise(a, b, n, m, simple_wage, trigonometrical_base)
         eukl_errors[n] = eukl_n
         max_errors[n] = max_n
@@ -29,13 +29,13 @@ def exercise_trigonometrical(m):
 
 def exercise_1():
     errors = {}
-    for m in range(1, 10):
+    for m in range(1, 11):
         errors[m] = exercise_polynomial(m)
     return errors
 
 
 def exercise_2():
     errors = {}
-    for m in range(1, 10):
+    for m in range(1, 26):
         errors[m] = exercise_trigonometrical(m)
     return errors

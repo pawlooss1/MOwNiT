@@ -19,8 +19,8 @@ def monomial_base(i):
 def trigonometrical_base(i):
     k = (i + 1) // 2
     if i % 2 == 1:
-        return lambda x: np.sin(k * x)
-    return lambda x: np.cos(k * x)
+        return lambda x: np.sin(k * (x * 2 / 3 + np.pi))
+    return lambda x: np.cos(k * (x * 2 / 3 + np.pi))
 
 
 def calculate_matrix_elem(row, col, x_arr, wage_fun, base_generator):
@@ -62,15 +62,15 @@ def calculate_errors(y_print, p_print):
 
 
 def print_errors(eukl, max):
-    print('Błąd interpolacji(norma euklidesowa):', eukl)
-    print('Błąd interpolacji(norma maksimum):', max)
+    print('Błąd aproksymacji(norma euklidesowa):', eukl)
+    print('Błąd aproksymacji(norma maksimum):', max)
 
 
 def print_plots(x_approx, x_print, y_approx, y_print, p_print, plot_name):
     fig, ax = plt.subplots()
     ax.plot(x_print, p_print, label="W(x)")
     ax.plot(x_print, y_print, label="f(x)")
-    ax.plot(x_approx, y_approx, '*', label='Węzły interpolacji')
+    ax.plot(x_approx, y_approx, '*', label='Węzły aproksymacji')
     ax.set_title(plot_name)
     ax.set_ylabel('y')
     ax.set_xlabel('x')

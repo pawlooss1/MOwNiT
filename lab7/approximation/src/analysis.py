@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from ex1 import exercise_1
+from ex import exercise_1, exercise_2
 
 # from ex2 import exercise_2
 
@@ -15,6 +15,7 @@ def read_data():
     outside = [] #list(polynomial_errors.keys())
     for key in polynomial_errors[2]['Eukl'].keys():
         outside += list(polynomial_errors.keys())
+    outside.sort()
     inside = []
     for key in polynomial_errors.keys():
         inside += polynomial_errors[key]['Eukl'].keys()
@@ -23,8 +24,8 @@ def read_data():
     print(outside, inside)
     print(list(zip(outside, inside)))
     print(hier_index)
-    for key in polynomial_errors.keys():
-        polynomial_data[key] = pd.DataFrame(polynomial_errors[key])
+    #for key in polynomial_errors.keys():
+    #    polynomial_data[key] = pd.DataFrame(polynomial_errors[key])
     data['Polynomial'] = pd.DataFrame(polynomial_data, index=hier_index)
     # data['Cubic'] = pd.DataFrame(cubic)
 
