@@ -16,6 +16,13 @@ def monomial_base(i):
     return lambda x: x**i
 
 
+def trigonometrical_base(i):
+    k = (i + 1) // 2
+    if i % 2 == 1:
+        return lambda x: np.sin(k * x)
+    return lambda x: np.cos(k * x)
+
+
 def calculate_matrix_elem(row, col, x_arr, wage_fun, base_generator):
     fi_k = base_generator(row)
     fi_j = base_generator(col)
@@ -88,7 +95,10 @@ def approximate(m, x_print, x_approx, y_approx, wage_fun, base_generator):
 
 
 def exercise(a, b, n, m, wage, base):
-    plot_name = "Stopień wielomianu: {0:d}, liczba węzłów: {1:d}".format(m, n)
+    if base == trigonometrical_base:
+        plot_name = "Liczba f. trygonometrycznych (m): {0:d}, liczba węzłów (n): {1:d}".format(m, n)
+    else:
+        plot_name = "Stopień wielomianu (m): {0:d}, liczba węzłów (n): {1:d}".format(m, n)
     m = m + 1
     print(plot_name)
     x_approx = np.linspace(a, b, n)
