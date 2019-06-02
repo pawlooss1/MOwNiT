@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ba9122f-d336-4737-90d6-150260a807e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../lab8/differential_equations/src/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lab8/Differential_equations.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab8/Differential_equations.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab8/differential_equations/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab8/differential_equations/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +15,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="391">
               <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
             </state>
           </provider>
@@ -78,9 +77,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="width" value="959" />
-    <option name="height" value="1039" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="949" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -223,17 +222,17 @@
       <workItem from="1558349496502" duration="1179000" />
       <workItem from="1558356435748" duration="4619000" />
       <workItem from="1558965537811" duration="131000" />
+      <workItem from="1559163222993" duration="76000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11338000" />
+    <option name="totallyTimeSpent" value="11414000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="959" height="1039" extended-state="4" />
-    <editor active="true" />
+    <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21905805" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10779082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -248,14 +247,14 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.33005464" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" sideWeight="0.49265906" weight="0.7612267" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32977587" />
       <window_info anchor="right" id="R Packages" order="5" />
-      <window_info anchor="right" x="0" y="0" width="430" height="840" id="Documentation" order="6" sideWeight="0.50734097" side_tool="true" weight="0.7502738" />
+      <window_info anchor="right" x="0" y="0" width="430" height="840" id="Documentation" order="6" sideWeight="0.50734097" side_tool="true" visible="true" weight="0.36125934" />
       <window_info anchor="right" id="Database" order="7" />
     </layout>
   </component>
@@ -265,7 +264,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/ex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="391">
           <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
         </state>
       </provider>
